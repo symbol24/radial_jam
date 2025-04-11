@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SceneData" load_steps=2 format=3 uid="uid://dsfkluvy5n808"]
+
+[ext_resource type="Script" uid="uid://bfahqt13ngdgf" path="res://Code/Utilities/scene_data.gd" id="1_yk8vs"]
+
+[resource]
+script = ExtResource("1_yk8vs")
+id = &"stage"
+uid = "uid://dfvy3ynes143d"
+metadata/_custom_type_script = "uid://bfahqt13ngdgf"

@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://c86ox64isbp5t"]
+
+[ext_resource type="Script" uid="uid://bp643532aqe3f" path="res://Code/Autoloads/scene_manager.gd" id="1_ttbo2"]
+[ext_resource type="Script" uid="uid://bfahqt13ngdgf" path="res://Code/Utilities/scene_data.gd" id="2_glina"]
+[ext_resource type="Resource" uid="uid://dsfkluvy5n808" path="res://Data/Scenes/stage_data.tres" id="3_ftjqf"]
+
+[node name="SceneManager" type="Node"]
+script = ExtResource("1_ttbo2")
+scenes = Array[ExtResource("2_glina")]([ExtResource("3_ftjqf")])

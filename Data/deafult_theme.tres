@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ds0ix4cj0kinw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15aj3"]
+bg_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_15aj3"]
+
+[resource]
+default_font_size = 6
+LoadingLabel/base_type = &"Label"
+LoadingLabel/font_sizes/font_size = 24
+LoadingScreen/base_type = &"PanelContainer"
+LoadingScreen/styles/panel = SubResource("StyleBoxFlat_15aj3")
+PanelContainer/styles/panel = SubResource("StyleBoxEmpty_15aj3")

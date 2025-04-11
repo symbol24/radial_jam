@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfvy3ynes143d"]
+
+[ext_resource type="Texture2D" uid="uid://dstl3lw6iwooh" path="res://icon.svg" id="1_70rqm"]
+[ext_resource type="Texture2D" uid="uid://b8desh4bmrh3r" path="res://Textures/test.png" id="1_84iix"]
+[ext_resource type="Script" uid="uid://c0xmj5tajscey" path="res://Code/Utilities/camera.gd" id="1_plxqo"]
+[ext_resource type="Script" uid="uid://cjphl23s0ftus" path="res://Code/stage.gd" id="1_sr6x0"]
+[ext_resource type="Script" uid="uid://b6s82ash7cmf5" path="res://Code/Utilities/camera_mover.gd" id="1_xgxar"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xgxar"]
+
+[node name="Stage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sr6x0")
+
+[node name="camera_mover" type="CharacterBody2D" parent="."]
+script = ExtResource("1_xgxar")
+speed = 150.0
+acceleration = 900.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="camera_mover"]
+shape = SubResource("CircleShape2D_xgxar")
+
+[node name="Sprite2D" type="Sprite2D" parent="camera_mover"]
+visible = false
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_70rqm")
+
+[node name="camera" type="Camera2D" parent="camera_mover" node_paths=PackedStringArray("radials")]
+unique_name_in_owner = true
+position_smoothing_speed = 10.0
+script = ExtResource("1_plxqo")
+radials = [NodePath("../../TextureRect")]
+limit = 500
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+texture = ExtResource("1_84iix")
+expand_mode = 5
+stretch_mode = 4
