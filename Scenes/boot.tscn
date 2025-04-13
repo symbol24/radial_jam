@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://ne8vhv5kydcf"]
 
 [ext_resource type="Script" uid="uid://bgrvk4nstxest" path="res://Code/boot.gd" id="1_cp56e"]
-[ext_resource type="Texture2D" uid="uid://bnvk2yndibfth" path="res://Textures/logo_back_mini.png" id="2_eyucu"]
-[ext_resource type="Texture2D" uid="uid://xrksujy4iv1w" path="res://Textures/glasses_mustache.png" id="3_a0vx2"]
-[ext_resource type="Texture2D" uid="uid://btdmge06bhvs8" path="res://Textures/bleed_blue.jpg" id="4_a0vx2"]
+[ext_resource type="Texture2D" uid="uid://bu6lbesw36re" path="res://Textures/godot_emoji_02.png" id="2_a0vx2"]
+[ext_resource type="Texture2D" uid="uid://vp1gwkxrmmui" path="res://Textures/pixel_rid.png" id="3_a0vx2"]
+[ext_resource type="Texture2D" uid="uid://di1tdd38t68ef" path="res://Textures/pixel_mustache.png" id="4_4l64y"]
 
 [sub_resource type="Animation" id="Animation_4l64y"]
 length = 0.001
@@ -103,6 +103,30 @@ tracks/7/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("godot_label:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("godot_label:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_a0vx2"]
 resource_name = "godot"
@@ -127,6 +151,30 @@ tracks/1/path = NodePath("godot:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("godot_label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("godot_label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 1, 2, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
@@ -220,52 +268,61 @@ _data = {
 [node name="boot" type="Node2D"]
 script = ExtResource("1_cp56e")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(640, 360)
-offset_right = 640.0
-offset_bottom = 360.0
-
 [node name="godot" type="TextureRect" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(640, 0)
-offset_top = -85.0
-offset_right = 640.0
-offset_bottom = 427.0
-texture = ExtResource("4_a0vx2")
+custom_minimum_size = Vector2(120, 0)
+offset_left = 60.0
+offset_top = 20.0
+offset_right = 180.0
+offset_bottom = 260.0
+texture = ExtResource("2_a0vx2")
 expand_mode = 5
+stretch_mode = 4
+
+[node name="godot_label" type="Label" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(240, 0)
+offset_top = 130.0
+offset_right = 240.0
+offset_bottom = 135.0
+theme_type_variation = &"BoxLabelTitle"
+text = "Made with godot"
+horizontal_alignment = 1
 
 [node name="logo" type="TextureRect" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(300, 0)
-offset_left = 170.0
-offset_top = 10.0
-offset_right = 470.0
-offset_bottom = 310.0
-texture = ExtResource("2_eyucu")
+custom_minimum_size = Vector2(120, 0)
+offset_left = 60.0
+offset_top = 20.0
+offset_right = 180.0
+offset_bottom = 200.0
+texture = ExtResource("3_a0vx2")
 expand_mode = 5
+stretch_mode = 4
 
 [node name="mustache" type="TextureRect" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(160, 0)
-offset_left = 240.0
-offset_top = 105.0
-offset_right = 400.0
-offset_bottom = 305.0
-texture = ExtResource("3_a0vx2")
+custom_minimum_size = Vector2(120, 0)
+offset_left = 60.0
+offset_top = 20.0
+offset_right = 180.0
+offset_bottom = 140.0
+texture = ExtResource("4_4l64y")
 expand_mode = 5
+stretch_mode = 4
 
 [node name="rid_name" type="Label" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(640, 0)
-offset_top = 281.0
-offset_right = 640.0
-offset_bottom = 326.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
+custom_minimum_size = Vector2(240, 0)
+offset_top = 130.0
+offset_right = 240.0
+offset_bottom = 143.0
+theme_type_variation = &"BoxLabelTitle"
 text = "Robots in Disguise"
 horizontal_alignment = 1
 vertical_alignment = 1

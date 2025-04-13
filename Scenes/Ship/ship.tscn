@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5fbydvx33ji4"]
+
+[ext_resource type="Script" uid="uid://drk3g6apyib8v" path="res://Code/Ship/ship.gd" id="1_0beu4"]
+[ext_resource type="Texture2D" uid="uid://bp0rc4lm8qeju" path="res://Textures/1bit_icons/1bit 16px icons part-2.png" id="1_qkeub"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0beu4"]
+radius = 7.0
+
+[node name="Ship" type="Node2D" groups=["ship"]]
+process_mode = 1
+script = ExtResource("1_0beu4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4, 4)
+texture = ExtResource("1_qkeub")
+hframes = 21
+vframes = 21
+frame = 422
+
+[node name="collector" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 4
+
+[node name="collector_collider" type="CollisionShape2D" parent="collector"]
+shape = SubResource("CircleShape2D_0beu4")

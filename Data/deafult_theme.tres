@@ -1,14 +1,114 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ds0ix4cj0kinw"]
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://ds0ix4cj0kinw"]
+
+[ext_resource type="Texture2D" uid="uid://cm6ttfguwtm5x" path="res://Textures/slider_handle.png" id="1_hvcul"]
+[ext_resource type="FontFile" uid="uid://dnhk6ysssjo0f" path="res://Data/Fonts/mago2.ttf" id="1_srymy"]
+[ext_resource type="Texture2D" uid="uid://c0vugtxy6sncx" path="res://Textures/slider_handle_disabled.png" id="2_hqc5b"]
+[ext_resource type="Texture2D" uid="uid://dm6lo4h2dw7c0" path="res://Textures/slider_handle_grabbed.png" id="3_2jc0e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvcul"]
+bg_color = Color(0.458405, 0.458405, 0.458405, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jc0e"]
+bg_color = Color(0.359069, 0.359069, 0.359069, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gl2h4"]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqc5b"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h521g"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_srymy"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_gl2h4"]
+color = Color(0.359069, 0.359069, 0.359069, 1)
+thickness = 2
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_h521g"]
+color = Color(0.180005, 0.180005, 0.180005, 1)
+thickness = 2
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_vkkj3"]
+color = Color(0.537011, 0.537011, 0.537011, 1)
+thickness = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15aj3"]
-bg_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_15aj3"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkkj3"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
 [resource]
+default_font = ExtResource("1_srymy")
 default_font_size = 6
+BoxLabelTitle/base_type = &"Label"
+BoxLabelTitle/font_sizes/font_size = 16
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/styles/focus = SubResource("StyleBoxFlat_hvcul")
+Button/styles/hover = SubResource("StyleBoxFlat_2jc0e")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_gl2h4")
+Button/styles/normal = SubResource("StyleBoxFlat_hqc5b")
+Button/styles/pressed = SubResource("StyleBoxFlat_h521g")
+CreditsPC/base_type = &"PanelContainer"
+CreditsPC/styles/panel = SubResource("StyleBoxEmpty_srymy")
+CreditsSubLabel/base_type = &"Label"
+CreditsSubLabel/font_sizes/font_size = 8
+HSlider/icons/grabber = ExtResource("1_hvcul")
+HSlider/icons/grabber_disabled = ExtResource("2_hqc5b")
+HSlider/icons/grabber_highlight = ExtResource("3_2jc0e")
+HSlider/styles/grabber_area = SubResource("StyleBoxLine_gl2h4")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxLine_h521g")
+HSlider/styles/slider = SubResource("StyleBoxLine_vkkj3")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/font_sizes/font_size = 6
 LoadingLabel/base_type = &"Label"
 LoadingLabel/font_sizes/font_size = 24
 LoadingScreen/base_type = &"PanelContainer"
 LoadingScreen/styles/panel = SubResource("StyleBoxFlat_15aj3")
 PanelContainer/styles/panel = SubResource("StyleBoxEmpty_15aj3")
+SidePanel/base_type = &"PanelContainer"
+SidePanel/styles/panel = SubResource("StyleBoxFlat_vkkj3")
+StarMaterialPlayUiLabel/base_type = &"Label"
+StarMaterialPlayUiLabel/font_sizes/font_size = 10
+UnlockMessage/base_type = &"Label"
+UnlockMessage/font_sizes/font_size = 8

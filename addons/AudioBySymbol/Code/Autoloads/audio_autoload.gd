@@ -44,7 +44,11 @@ func _ready() -> void:
 	if AudioServer.get_bus_index("SFX") != 2: 
 		AudioServer.add_bus(2)
 		AudioServer.set_bus_name(2, "SFX")
-
+	
+	_update_audio_volume("Master", default.master_volume)
+	_update_audio_volume("Music", default.music_volume)
+	_update_audio_volume("SFX", default.sfx_volume)
+	
 
 func _process(_delta:float) -> void:
 	# Used to check for dead or zombie audio streams in the pool. Disabling this line will remove the check if it becomes a performance issue.

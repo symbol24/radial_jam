@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UpgradeItemData" load_steps=2 format=3 uid="uid://bhcqrfmsombk8"]
+
+[ext_resource type="Script" uid="uid://tbubb8b2kuue" path="res://Code/Radials/Items/upgrade_item_data.gd" id="1_46ln2"]
+
+[resource]
+script = ExtResource("1_46ln2")
+base = 1563
+percent = 0.1
+visible_at_create = false
+id = &"recycler"
+uid = "uid://sxe5f5krvq1h"
+metadata/_custom_type_script = "uid://tbubb8b2kuue"

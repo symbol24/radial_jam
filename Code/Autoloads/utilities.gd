@@ -1,0 +1,127 @@
+extends Node
+
+
+var rng:RandomNumberGenerator
+#region Giant Dict for Levels of star mat spawning
+var levels:Dictionary = {
+1: {"xp_total":100,"xp_gain":100,"time_for_level":60,"time_per_xp":1},
+2: {"xp_total":210,"xp_gain":110,"time_for_level":67,"time_per_xp":1},
+3: {"xp_total":331,"xp_gain":121,"time_for_level":74,"time_per_xp":1},
+4: {"xp_total":464,"xp_gain":133,"time_for_level":82,"time_per_xp":1},
+5: {"xp_total":611,"xp_gain":146,"time_for_level":92,"time_per_xp":1},
+6: {"xp_total":772,"xp_gain":161,"time_for_level":102,"time_per_xp":1},
+7: {"xp_total":949,"xp_gain":177,"time_for_level":113,"time_per_xp":1},
+8: {"xp_total":1144,"xp_gain":195,"time_for_level":126,"time_per_xp":1},
+9: {"xp_total":1358,"xp_gain":214,"time_for_level":140,"time_per_xp":1},
+10: {"xp_total":1594,"xp_gain":236,"time_for_level":155,"time_per_xp":1},
+11: {"xp_total":1853,"xp_gain":259,"time_for_level":173,"time_per_xp":1},
+12: {"xp_total":2138,"xp_gain":285,"time_for_level":192,"time_per_xp":1},
+13: {"xp_total":2452,"xp_gain":314,"time_for_level":214,"time_per_xp":1},
+14: {"xp_total":2797,"xp_gain":345,"time_for_level":238,"time_per_xp":1},
+15: {"xp_total":3177,"xp_gain":380,"time_for_level":265,"time_per_xp":1},
+16: {"xp_total":3595,"xp_gain":418,"time_for_level":295,"time_per_xp":1},
+17: {"xp_total":4054,"xp_gain":459,"time_for_level":328,"time_per_xp":1},
+18: {"xp_total":4560,"xp_gain":505,"time_for_level":365,"time_per_xp":1},
+19: {"xp_total":5116,"xp_gain":556,"time_for_level":406,"time_per_xp":1},
+20: {"xp_total":5728,"xp_gain":612,"time_for_level":452,"time_per_xp":1},
+21: {"xp_total":6400,"xp_gain":673,"time_for_level":503,"time_per_xp":1},
+22: {"xp_total":7140,"xp_gain":740,"time_for_level":560,"time_per_xp":1},
+23: {"xp_total":7954,"xp_gain":814,"time_for_level":623,"time_per_xp":1},
+24: {"xp_total":8850,"xp_gain":895,"time_for_level":694,"time_per_xp":1},
+25: {"xp_total":9835,"xp_gain":985,"time_for_level":773,"time_per_xp":1},
+26: {"xp_total":10918,"xp_gain":1083,"time_for_level":861,"time_per_xp":1},
+27: {"xp_total":12110,"xp_gain":1192,"time_for_level":959,"time_per_xp":1},
+28: {"xp_total":13421,"xp_gain":1311,"time_for_level":1068,"time_per_xp":1},
+29: {"xp_total":14863,"xp_gain":1442,"time_for_level":1190,"time_per_xp":1},
+30: {"xp_total":16449,"xp_gain":1586,"time_for_level":1326,"time_per_xp":1},
+31: {"xp_total":18194,"xp_gain":1745,"time_for_level":1477,"time_per_xp":1},
+32: {"xp_total":20114,"xp_gain":1919,"time_for_level":1646,"time_per_xp":1},
+33: {"xp_total":22225,"xp_gain":2111,"time_for_level":1835,"time_per_xp":1},
+34: {"xp_total":24548,"xp_gain":2323,"time_for_level":2045,"time_per_xp":1},
+35: {"xp_total":27102,"xp_gain":2555,"time_for_level":2280,"time_per_xp":1},
+36: {"xp_total":29913,"xp_gain":2810,"time_for_level":2542,"time_per_xp":1},
+37: {"xp_total":33004,"xp_gain":3091,"time_for_level":2834,"time_per_xp":1},
+38: {"xp_total":36404,"xp_gain":3400,"time_for_level":3160,"time_per_xp":1},
+39: {"xp_total":40145,"xp_gain":3740,"time_for_level":3524,"time_per_xp":1},
+40: {"xp_total":44259,"xp_gain":4114,"time_for_level":3931,"time_per_xp":1},
+41: {"xp_total":48785,"xp_gain":4526,"time_for_level":4384,"time_per_xp":1},
+42: {"xp_total":53764,"xp_gain":4979,"time_for_level":4891,"time_per_xp":1},
+43: {"xp_total":59240,"xp_gain":5476,"time_for_level":5456,"time_per_xp":1},
+44: {"xp_total":65264,"xp_gain":6024,"time_for_level":6088,"time_per_xp":1},
+45: {"xp_total":71890,"xp_gain":6626,"time_for_level":6793,"time_per_xp":1},
+46: {"xp_total":79180,"xp_gain":7289,"time_for_level":7581,"time_per_xp":1},
+47: {"xp_total":87198,"xp_gain":8018,"time_for_level":8461,"time_per_xp":1},
+48: {"xp_total":96017,"xp_gain":8820,"time_for_level":9444,"time_per_xp":1},
+49: {"xp_total":105719,"xp_gain":9702,"time_for_level":10542,"time_per_xp":1},
+50: {"xp_total":116391,"xp_gain":10672,"time_for_level":11769,"time_per_xp":1},
+51: {"xp_total":128130,"xp_gain":11739,"time_for_level":13140,"time_per_xp":1},
+52: {"xp_total":141043,"xp_gain":12913,"time_for_level":14673,"time_per_xp":1},
+53: {"xp_total":155247,"xp_gain":14204,"time_for_level":16389,"time_per_xp":1},
+54: {"xp_total":170872,"xp_gain":15625,"time_for_level":18309,"time_per_xp":1},
+55: {"xp_total":188059,"xp_gain":17187,"time_for_level":20458,"time_per_xp":1},
+56: {"xp_total":206965,"xp_gain":18906,"time_for_level":22864,"time_per_xp":1},
+57: {"xp_total":227762,"xp_gain":20797,"time_for_level":25557,"time_per_xp":1},
+58: {"xp_total":250638,"xp_gain":22876,"time_for_level":28574,"time_per_xp":1},
+59: {"xp_total":275802,"xp_gain":25164,"time_for_level":31954,"time_per_xp":1},
+60: {"xp_total":303482,"xp_gain":27680,"time_for_level":35739,"time_per_xp":1},
+61: {"xp_total":333930,"xp_gain":30448,"time_for_level":39980,"time_per_xp":1},
+62: {"xp_total":367423,"xp_gain":33493,"time_for_level":44733,"time_per_xp":1},
+63: {"xp_total":404265,"xp_gain":36842,"time_for_level":50063,"time_per_xp":1},
+64: {"xp_total":444792,"xp_gain":40527,"time_for_level":56037,"time_per_xp":1},
+65: {"xp_total":489371,"xp_gain":44579,"time_for_level":62737,"time_per_xp":1},
+66: {"xp_total":538408,"xp_gain":49037,"time_for_level":70252,"time_per_xp":1},
+67: {"xp_total":592349,"xp_gain":53941,"time_for_level":78682,"time_per_xp":1},
+68: {"xp_total":651684,"xp_gain":59335,"time_for_level":88144,"time_per_xp":1},
+69: {"xp_total":716952,"xp_gain":65268,"time_for_level":98760,"time_per_xp":2},
+70: {"xp_total":788747,"xp_gain":71795,"time_for_level":110676,"time_per_xp":2},
+71: {"xp_total":867722,"xp_gain":78975,"time_for_level":124053,"time_per_xp":2},
+72: {"xp_total":954594,"xp_gain":86872,"time_for_level":139079,"time_per_xp":2},
+73: {"xp_total":1050153,"xp_gain":95559,"time_for_level":155959,"time_per_xp":2},
+74: {"xp_total":1155269,"xp_gain":105115,"time_for_level":174921,"time_per_xp":2},
+75: {"xp_total":1270896,"xp_gain":115627,"time_for_level":196225,"time_per_xp":2},
+76: {"xp_total":1398085,"xp_gain":127190,"time_for_level":220158,"time_per_xp":2},
+77: {"xp_total":1537994,"xp_gain":139909,"time_for_level":247059,"time_per_xp":2},
+78: {"xp_total":1691893,"xp_gain":153899,"time_for_level":277315,"time_per_xp":2},
+79: {"xp_total":1861182,"xp_gain":169289,"time_for_level":311326,"time_per_xp":2},
+80: {"xp_total":2047401,"xp_gain":186218,"time_for_level":349578,"time_per_xp":2},
+81: {"xp_total":2252241,"xp_gain":204840,"time_for_level":392622,"time_per_xp":2},
+82: {"xp_total":2477565,"xp_gain":225324,"time_for_level":441034,"time_per_xp":2},
+83: {"xp_total":2725421,"xp_gain":247856,"time_for_level":495511,"time_per_xp":2},
+84: {"xp_total":2998063,"xp_gain":272642,"time_for_level":556840,"time_per_xp":2},
+85: {"xp_total":3297970,"xp_gain":299906,"time_for_level":625882,"time_per_xp":2},
+86: {"xp_total":3627867,"xp_gain":329897,"time_for_level":703608,"time_per_xp":2},
+87: {"xp_total":3990754,"xp_gain":362887,"time_for_level":791147,"time_per_xp":2},
+88: {"xp_total":4389929,"xp_gain":399175,"time_for_level":889736,"time_per_xp":2},
+89: {"xp_total":4829022,"xp_gain":439093,"time_for_level":1000813,"time_per_xp":2},
+90: {"xp_total":5312024,"xp_gain":483002,"time_for_level":1126008,"time_per_xp":2},
+91: {"xp_total":5843326,"xp_gain":531302,"time_for_level":1267114,"time_per_xp":2},
+92: {"xp_total":6427759,"xp_gain":584433,"time_for_level":1426150,"time_per_xp":2},
+93: {"xp_total":7070635,"xp_gain":642876,"time_for_level":1605454,"time_per_xp":2},
+94: {"xp_total":7777798,"xp_gain":707163,"time_for_level":1807677,"time_per_xp":3},
+95: {"xp_total":8555678,"xp_gain":777880,"time_for_level":2035741,"time_per_xp":3},
+96: {"xp_total":9411346,"xp_gain":855668,"time_for_level":2293025,"time_per_xp":3},
+97: {"xp_total":10352581,"xp_gain":941235,"time_for_level":2583361,"time_per_xp":3},
+98: {"xp_total":11387939,"xp_gain":1035358,"time_for_level":2911086,"time_per_xp":3},
+99: {"xp_total":12526832,"xp_gain":1138894,"time_for_level":3281003,"time_per_xp":3},
+}
+#endregion
+#region Level unlocks
+var unlocks:Dictionary = {
+	2:{&"speed":"Speed upgrades have been unlocked. Press [%s] to open upgrade menu." % "enter"},
+	5:{&"collector":"Collector platforms have been unlocked."},
+	10:{&"generator":"Star Material generators have been unlocked."},
+	18:{&"recycler":"Dark Matter Recyclers have been unlocked. Star Material lost to the black hole can be recouped!"},
+}
+#endregion
+
+
+func _ready() -> void:
+	rng = RandomNumberGenerator.new()
+	rng.seed = 12345
+
+
+func get_point_on_circle(degrees:float) -> Vector2:
+	var rads:float = deg_to_rad(degrees)
+	var x = cos(rads)
+	var y = sin(rads)
+	return Vector2(x, y)

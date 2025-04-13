@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bagtvh6a0tpfw"]
+
+[ext_resource type="Script" uid="uid://cofkmk1r6xsjj" path="res://Code/BlackHole/black_hole.gd" id="1_0r60h"]
+[ext_resource type="Texture2D" uid="uid://b8desh4bmrh3r" path="res://Textures/test.png" id="1_vn5si"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vn5si"]
+radius = 9.0
+
+[node name="black_hole" type="Area2D"]
+process_mode = 1
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_0r60h")
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_vn5si")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vn5si")

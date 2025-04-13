@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RadialMenuData" load_steps=7 format=3 uid="uid://bwl5earidrct6"]
+
+[ext_resource type="Script" uid="uid://6mrcn7qy5ryt" path="res://Code/Radials/Items/radial_item_data.gd" id="1_wwqiv"]
+[ext_resource type="Resource" uid="uid://cytw1vhewjvxs" path="res://Data/Radials/PauseMenu/back_item.tres" id="2_7nhbl"]
+[ext_resource type="Script" uid="uid://ccgbf3pijgq37" path="res://Code/Radials/radial_menu_data.gd" id="2_oo1jg"]
+[ext_resource type="Resource" uid="uid://ckfiqqyo00m4p" path="res://Data/Radials/PauseMenu/audio_item.tres" id="3_pvqda"]
+[ext_resource type="Resource" uid="uid://dxmmlrvg13mtp" path="res://Data/Radials/PauseMenu/credits_item.tres" id="4_dhy6o"]
+[ext_resource type="Resource" uid="uid://y4fqxfk4etq3" path="res://Data/Radials/PauseMenu/how_to_item.tres" id="5_pvqda"]
+
+[resource]
+script = ExtResource("2_oo1jg")
+id = &"pause_menu"
+items = Array[ExtResource("1_wwqiv")]([ExtResource("2_7nhbl"), ExtResource("3_pvqda"), ExtResource("4_dhy6o"), ExtResource("5_pvqda")])
+metadata/_custom_type_script = "uid://ccgbf3pijgq37"

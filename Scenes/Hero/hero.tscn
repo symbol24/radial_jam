@@ -1,0 +1,81 @@
+[gd_scene load_steps=13 format=3 uid="uid://sp20t8vt68tp"]
+
+[ext_resource type="Script" uid="uid://cw212rbxvu3pc" path="res://Code/Hero/hero.gd" id="1_mi3op"]
+[ext_resource type="Texture2D" uid="uid://1peg3dist5fa" path="res://Textures/Chroma-Noir-8x8/Hero.png" id="1_xnt5j"]
+[ext_resource type="Resource" uid="uid://colhohhu6wg2o" path="res://Data/Hero/hero_data.tres" id="2_cnx8l"]
+[ext_resource type="Script" uid="uid://5dglhw8n36ds" path="res://Code/Hero/Actions/move.gd" id="3_cnx8l"]
+[ext_resource type="Script" uid="uid://ct0e8qpexv31f" path="res://Code/Utilities/hit_box.gd" id="6_6gt6r"]
+[ext_resource type="Script" uid="uid://bk8et7f1yhgtf" path="res://Code/Hero/Actions/open_radial_menu.gd" id="6_8frid"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6gt6r"]
+radius = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mi3op"]
+atlas = ExtResource("1_xnt5j")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnx8l"]
+atlas = ExtResource("1_xnt5j")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2mh7"]
+atlas = ExtResource("1_xnt5j")
+region = Rect2(0, 24, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mo6mi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mi3op")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnx8l")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2mh7")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8frid"]
+radius = 4.0
+
+[node name="hero" type="CharacterBody2D" groups=["hero"]]
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_mi3op")
+hero_data = ExtResource("2_cnx8l")
+
+[node name="move_collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6gt6r")
+
+[node name="animated_sprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_mo6mi")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="HeroMove" type="Node2D" parent="."]
+script = ExtResource("3_cnx8l")
+metadata/_custom_type_script = "uid://5dglhw8n36ds"
+
+[node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("6_6gt6r")
+metadata/_custom_type_script = "uid://ct0e8qpexv31f"
+
+[node name="hit_collider" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_8frid")
+
+[node name="Abilities" type="Node2D" parent="."]
+script = ExtResource("6_8frid")
+radial_menu_id = "abilities"
+input_id = &"ability"
+metadata/_custom_type_script = "uid://bk8et7f1yhgtf"

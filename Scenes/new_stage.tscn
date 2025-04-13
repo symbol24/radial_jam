@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://67pq5ege0f60"]
+
+[ext_resource type="Script" uid="uid://cjphl23s0ftus" path="res://Code/stage.gd" id="1_2hfhi"]
+[ext_resource type="PackedScene" uid="uid://bagtvh6a0tpfw" path="res://Scenes/BlackHole/black_hole.tscn" id="1_4qhqg"]
+[ext_resource type="PackedScene" uid="uid://c5fbydvx33ji4" path="res://Scenes/Ship/ship.tscn" id="2_3gbu4"]
+[ext_resource type="Script" uid="uid://dk85vyl55pee7" path="res://Code/StarMaterial/star_material_spawner.gd" id="3_4qhqg"]
+
+[node name="NewStage" type="Node2D" groups=["stage"]]
+process_mode = 1
+script = ExtResource("1_2hfhi")
+
+[node name="black_hole" parent="." instance=ExtResource("1_4qhqg")]
+position = Vector2(90, 90)
+
+[node name="StarMaterialSpawner" type="Node2D" parent="."]
+process_mode = 1
+script = ExtResource("3_4qhqg")
+base_spawn_delay = 2.0
+
+[node name="Ship" parent="." instance=ExtResource("2_3gbu4")]
+position = Vector2(25, 19)

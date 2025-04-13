@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfkqp1ekkxod0"]
+
+[ext_resource type="Script" uid="uid://cshvm6244mspw" path="res://Code/Radials/Items/upgrade_radial_item.gd" id="1_44byk"]
+[ext_resource type="Texture2D" uid="uid://bfvvqjkulod02" path="res://Textures/icons/play_16.png" id="2_y0afl"]
+
+[node name="UpgradeRadialItem" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_44byk")
+metadata/_custom_type_script = "uid://cjr35ytdm62sv"
+
+[node name="icon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+offset_left = -8.0
+offset_top = -60.0
+offset_right = 8.0
+offset_bottom = -44.0
+pivot_offset = Vector2(8, 8)
+texture = ExtResource("2_y0afl")
+stretch_mode = 2
+
+[node name="cost" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 5.0
+text = "00000000"
+horizontal_alignment = 1

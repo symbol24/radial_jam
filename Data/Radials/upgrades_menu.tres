@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RadialMenuData" load_steps=7 format=3 uid="uid://d3cps7trygy47"]
+
+[ext_resource type="Script" uid="uid://6mrcn7qy5ryt" path="res://Code/Radials/Items/radial_item_data.gd" id="1_0qi1t"]
+[ext_resource type="Script" uid="uid://ccgbf3pijgq37" path="res://Code/Radials/radial_menu_data.gd" id="2_n4581"]
+[ext_resource type="Resource" uid="uid://bpjti530rygdc" path="res://Data/Radials/upgrades/speed_item.tres" id="2_t4vmu"]
+[ext_resource type="Resource" uid="uid://drnp1tivjcwia" path="res://Data/Radials/upgrades/collector_item.tres" id="3_ri78u"]
+[ext_resource type="Resource" uid="uid://cykscf03d5uoh" path="res://Data/Radials/upgrades/generator_item.tres" id="4_hh5yw"]
+[ext_resource type="Resource" uid="uid://bhcqrfmsombk8" path="res://Data/Radials/upgrades/recycler_item.tres" id="5_ehrop"]
+
+[resource]
+script = ExtResource("2_n4581")
+id = &"upgrades_menu"
+items = Array[ExtResource("1_0qi1t")]([ExtResource("2_t4vmu"), ExtResource("3_ri78u"), ExtResource("4_hh5yw"), ExtResource("5_ehrop")])
+metadata/_custom_type_script = "uid://ccgbf3pijgq37"

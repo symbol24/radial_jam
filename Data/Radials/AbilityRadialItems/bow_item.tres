@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RadialItemData" load_steps=2 format=3 uid="uid://s0hwr8qems5b"]
+
+[ext_resource type="Script" uid="uid://6mrcn7qy5ryt" path="res://Code/Radials/Items/radial_item_data.gd" id="1_bx80r"]
+
+[resource]
+script = ExtResource("1_bx80r")
+id = &"bow_item"
+uid = ""
+tileset_id = 2
+item_coords = Vector2i(5, 1)
+metadata/_custom_type_script = "uid://6mrcn7qy5ryt"

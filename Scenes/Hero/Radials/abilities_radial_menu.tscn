@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6lwyf2qrepvf"]
+
+[ext_resource type="Script" uid="uid://b1ckapugxaet4" path="res://Code/Radials/radial_menu.gd" id="1_mr810"]
+[ext_resource type="Script" uid="uid://6mrcn7qy5ryt" path="res://Code/Radials/Items/radial_item_data.gd" id="2_42nit"]
+
+[sub_resource type="Resource" id="Resource_iqiu1"]
+script = ExtResource("2_42nit")
+id = &"starter"
+uid = ""
+item_coords = Vector2i(0, 0)
+metadata/_custom_type_script = "uid://6mrcn7qy5ryt"
+
+[node name="AbilitiesRadialMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_mr810")
+id = &"ability_radial"
+items = Array[ExtResource("2_42nit")]([SubResource("Resource_iqiu1")])
+metadata/_custom_type_script = "uid://b1ckapugxaet4"

@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://hwjol52yqrxy"]
+
+[ext_resource type="Script" uid="uid://b1ckapugxaet4" path="res://Code/Radials/radial_menu.gd" id="1_xjg0w"]
+[ext_resource type="Texture2D" uid="uid://bp0rc4lm8qeju" path="res://Textures/1bit_icons/1bit 16px icons part-2.png" id="2_rsuwk"]
+
+[node name="RadialMenu" type="Control"]
+process_mode = 3
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -179.0
+offset_bottom = -179.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xjg0w")
+
+[node name="items" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="selector" type="NinePatchRect" parent="."]
+unique_name_in_owner = true
+z_index = 100
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = -8.0
+offset_top = -32.0
+offset_right = 8.0
+offset_bottom = -16.0
+pivot_offset = Vector2(12, 12)
+texture = ExtResource("2_rsuwk")
+region_rect = Rect2(441, 33, 14, 14)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3

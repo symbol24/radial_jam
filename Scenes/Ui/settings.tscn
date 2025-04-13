@@ -1,0 +1,143 @@
+[gd_scene load_steps=4 format=3 uid="uid://k6soqaiglr3s"]
+
+[ext_resource type="Texture2D" uid="uid://bp0rc4lm8qeju" path="res://Textures/1bit_icons/1bit 16px icons part-2.png" id="1_fk80a"]
+[ext_resource type="Script" uid="uid://c3y1m858c5anf" path="res://Code/Ui/settings.gd" id="1_s0j8t"]
+[ext_resource type="Texture2D" uid="uid://dvm53x67mi73b" path="res://Textures/icons/undo_16.png" id="2_s0j8t"]
+
+[node name="Settings" type="Control"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -140.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s0j8t")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="border" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_fk80a")
+region_rect = Rect2(441.002, 9, 14, 14)
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="border"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_type_variation = &"CreditsPC"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="border/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="border/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_type_variation = &"BoxLabelTitle"
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="border/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="Label" type="Label" parent="border/PanelContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "Master"
+
+[node name="master_volume" type="HSlider" parent="border/PanelContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_top = NodePath("../../../../../btn_back")
+focus_neighbor_bottom = NodePath("../music_volume")
+max_value = 1.0
+step = 0.1
+
+[node name="Label2" type="Label" parent="border/PanelContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "Music"
+
+[node name="music_volume" type="HSlider" parent="border/PanelContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_top = NodePath("../master_volume")
+focus_neighbor_bottom = NodePath("../sfx_volume")
+max_value = 1.0
+step = 0.1
+
+[node name="Label3" type="Label" parent="border/PanelContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "SFX"
+
+[node name="sfx_volume" type="HSlider" parent="border/PanelContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_top = NodePath("../music_volume")
+focus_neighbor_bottom = NodePath("../bnt_fullscreen")
+max_value = 1.0
+step = 0.1
+
+[node name="Label4" type="Label" parent="border/PanelContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="bnt_fullscreen" type="Button" parent="border/PanelContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../sfx_volume")
+focus_neighbor_bottom = NodePath("../../../../../btn_back")
+text = "Off"
+
+[node name="btn_back" type="TextureButton" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 79.0
+offset_top = 79.0
+offset_right = 95.0
+offset_bottom = 95.0
+focus_neighbor_top = NodePath("../border/PanelContainer/VBoxContainer/GridContainer/bnt_fullscreen")
+focus_neighbor_bottom = NodePath("../border/PanelContainer/VBoxContainer/GridContainer/master_volume")
+texture_normal = ExtResource("2_s0j8t")
+
+[node name="border" type="NinePatchRect" parent="btn_back"]
+layout_mode = 0
+offset_left = -1.0
+offset_right = 17.0
+offset_bottom = 18.0
+texture = ExtResource("1_fk80a")
+region_rect = Rect2(465, 33, 14, 14)
+patch_margin_left = 2
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3

@@ -1,12 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfvy3ynes143d"]
+[gd_scene load_steps=5 format=4 uid="uid://dfvy3ynes143d"]
 
-[ext_resource type="Texture2D" uid="uid://dstl3lw6iwooh" path="res://icon.svg" id="1_70rqm"]
-[ext_resource type="Texture2D" uid="uid://b8desh4bmrh3r" path="res://Textures/test.png" id="1_84iix"]
-[ext_resource type="Script" uid="uid://c0xmj5tajscey" path="res://Code/Utilities/camera.gd" id="1_plxqo"]
 [ext_resource type="Script" uid="uid://cjphl23s0ftus" path="res://Code/stage.gd" id="1_sr6x0"]
-[ext_resource type="Script" uid="uid://b6s82ash7cmf5" path="res://Code/Utilities/camera_mover.gd" id="1_xgxar"]
+[ext_resource type="TileSet" uid="uid://ce1k267kh4dl7" path="res://Data/main_tileset.tres" id="2_70rqm"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xgxar"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_70rqm"]
+a = Vector2(0, -5)
+b = Vector2(-1, 185)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xgxar"]
+a = Vector2(1, 2)
+b = Vector2(314, 2)
 
 [node name="Stage" type="Control"]
 layout_mode = 3
@@ -17,34 +20,30 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sr6x0")
 
-[node name="camera_mover" type="CharacterBody2D" parent="."]
-script = ExtResource("1_xgxar")
-speed = 150.0
-acceleration = 900.0
+[node name="ground" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAADAAAAAgACAAAAAAADAAEAAgAJAAMAAAADAAIAAgAJAAQAAAADAAMAAgAJAAMAAAADAAQAAgAJAAQAAAADAAUAAgAKAAMAAAADAAYAAgAKAAQAAAADAAcAAgAJAAMAAAADAAgAAgAJAAQAAAADAAkAAgALAAMAAAADAAoAAgALAAQAAAADAAsAAgAJAAMAAAADAAwAAgAJAAQAAAADAA0AAgAJAAMAAAADAA4AAgAJAAQAAAADAA8AAgAJAAMAAAADABAAAgAKAAMAAAADABEAAgAKAAQAAAADABIAAgAMAAMAAAADABMAAgAMAAQAAAADABQAAgAJAAQAAAAEAAAAAgAAAAAAAAAFAAAAAgAAAAAAAAAGAAAAAgAAAAAAAAAHAAAAAgAAAAAAAAAIAAAAAgAAAAAAAAAJAAAAAgAAAAAAAAAKAAAAAgAAAAAAAAALAAAAAgAAAAAAAAAMAAAAAgAAAAAAAAANAAAAAgAAAAAAAAAOAAAAAgAAAAAAAAAPAAAAAgAAAAAAAAAQAAAAAgAAAAAAAAARAAAAAgAAAAAAAAASAAAAAgAAAAAAAAATAAAAAgAAAAAAAAAUAAAAAgAAAAAAAAAVAAAAAgAAAAAAAAAWAAAAAgAAAAAAAAAXAAAAAgAAAAAAAAAYAAAAAgAAAAAAAAAZAAAAAgAAAAAAAAAaAAAAAgAAAAAAAAAbAAAAAgAAAAAAAAAcAAAAAgAAAAAAAAAdAAAAAgAAAAAAAAAeAAAAAgAAAAAAAAAfAAAAAgAAAAAAAAAgAAAAAgAAAAAAAAAhAAAAAgAAAAAAAAAiAAAAAgAAAAAAAAAjAAAAAgAAAAAAAAAkAAAAAgAGAAAAAAAhAAsAAgAZAAoAAAAPABAAAgAiAAoAAAAJAAYAAgAaAAoAAAAdABEAAgAcAAoAAAAJABMAAgAdAAoAAAAlABMAAgAeAAoAAAAmABMAAgAfAAoAAAAVAAQAAgAgAAoAAAAWAAQAAgAhAAoAAAAiAAQAAgAbAAoAAAADABUAAgAJAAQAAAAkAAEAAgAJAAMAAAAkAAIAAgAJAAQAAAAkAAMAAgALAAMAAAAkAAQAAgALAAQAAAAkAAUAAgAJAAMAAAAkAAYAAgAJAAQAAAAkAAcAAgAMAAMAAAAkAAgAAgAMAAQAAAAkAAkAAgAJAAMAAAAkAAoAAgAJAAQAAAAkAAsAAgALAAMAAAAkAAwAAgALAAQAAAAkAA0AAgAJAAMAAAAkAA4AAgAJAAQAAAAkAA8AAgAJAAMAAAAkABAAAgAJAAQAAAAkABEAAgAJAAMAAAAkABIAAgAJAAQAAAAkABMAAgAJAAMAAAAkABQAAgAKAAMAAAAkABUAAgAKAAQAAAA=")
+tile_set = ExtResource("2_70rqm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="camera_mover"]
-shape = SubResource("CircleShape2D_xgxar")
+[node name="flipped_ground" type="TileMapLayer" parent="."]
+position = Vector2(0, -4)
+rotation = 3.14159
+tile_map_data = PackedByteArray("AADb/+n/AgACAAAAAAD8/+n/AgADAAAAAAD7/+n/AgAAAAAAAAD6/+n/AgAAAAAAAAD5/+n/AgAAAAAAAAD4/+n/AgAAAAAAAAD3/+n/AgAAAAAAAAD2/+n/AgAAAAAAAAD1/+n/AgAAAAAAAAD0/+n/AgAAAAAAAADz/+n/AgAAAAAAAADy/+n/AgAAAAAAAADx/+n/AgAAAAAAAADw/+n/AgAAAAAAAADv/+n/AgAAAAAAAADu/+n/AgAAAAAAAADt/+n/AgAAAAAAAADs/+n/AgAAAAAAAADr/+n/AgAAAAAAAADq/+n/AgAAAAAAAADp/+n/AgAAAAAAAADo/+n/AgAAAAAAAADn/+n/AgAAAAAAAADm/+n/AgAAAAAAAADl/+n/AgAAAAAAAADk/+n/AgAAAAAAAADj/+n/AgAAAAAAAADi/+n/AgAAAAAAAADh/+n/AgAAAAAAAADg/+n/AgAAAAAAAADf/+n/AgAAAAAAAADe/+n/AgAAAAAAAADd/+n/AgAAAAAAAADc/+n/AgAAAAAAAAA=")
+tile_set = ExtResource("2_70rqm")
 
-[node name="Sprite2D" type="Sprite2D" parent="camera_mover"]
-visible = false
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_70rqm")
+[node name="ground_collision" type="StaticBody2D" parent="."]
+collision_mask = 0
 
-[node name="camera" type="Camera2D" parent="camera_mover" node_paths=PackedStringArray("radials")]
-unique_name_in_owner = true
-position_smoothing_speed = 10.0
-script = ExtResource("1_plxqo")
-radials = [NodePath("../../TextureRect")]
-limit = 500
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground_collision"]
+position = Vector2(30, 0)
+shape = SubResource("SegmentShape2D_70rqm")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 0
-offset_left = -100.0
-offset_top = -100.0
-offset_right = 100.0
-offset_bottom = 100.0
-texture = ExtResource("1_84iix")
-expand_mode = 5
-stretch_mode = 4
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ground_collision"]
+position = Vector2(291, 0)
+shape = SubResource("SegmentShape2D_70rqm")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ground_collision"]
+shape = SubResource("SegmentShape2D_xgxar")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="ground_collision"]
+position = Vector2(0, 176)
+shape = SubResource("SegmentShape2D_xgxar")

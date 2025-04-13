@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RadialItemData" load_steps=2 format=3 uid="uid://cytw1vhewjvxs"]
+
+[ext_resource type="Script" uid="uid://6mrcn7qy5ryt" path="res://Code/Radials/Items/radial_item_data.gd" id="1_uqvrb"]
+
+[resource]
+script = ExtResource("1_uqvrb")
+id = &"back_item"
+uid = "uid://bfvvqjkulod02"
+metadata/_custom_type_script = "uid://6mrcn7qy5ryt"

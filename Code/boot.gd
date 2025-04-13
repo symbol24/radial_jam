@@ -12,6 +12,7 @@ func _input(_event: InputEvent) -> void:
 
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	animator.animation_finished.connect(_anim_end)
 	await get_tree().create_timer(1).timeout
 	animator.play(current)
