@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5fbydvx33ji4"]
+[gd_scene load_steps=5 format=3 uid="uid://c5fbydvx33ji4"]
 
 [ext_resource type="Script" uid="uid://drk3g6apyib8v" path="res://Code/Ship/ship.gd" id="1_0beu4"]
 [ext_resource type="Texture2D" uid="uid://bp0rc4lm8qeju" path="res://Textures/1bit_icons/1bit 16px icons part-2.png" id="1_qkeub"]
+[ext_resource type="Resource" uid="uid://ngipo3jm4ekh" path="res://Data/Audio/SFX/collect_sfx.tres" id="2_awow7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0beu4"]
 radius = 7.0
@@ -9,6 +10,7 @@ radius = 7.0
 [node name="Ship" type="Node2D" groups=["ship"]]
 process_mode = 1
 script = ExtResource("1_0beu4")
+collect_sfx = ExtResource("2_awow7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-4, 4)

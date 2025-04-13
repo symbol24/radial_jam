@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AudioFile" load_steps=7 format=3 uid="uid://ngipo3jm4ekh"]
+
+[ext_resource type="Script" uid="uid://naq7mv4jk3ys" path="res://addons/AudioBySymbol/Code/Audio/audio_file.gd" id="1_5lbui"]
+[ext_resource type="AudioStream" uid="uid://dcxgy4otlbiln" path="res://Audio/SFX/collect_01.wav" id="1_54kk7"]
+[ext_resource type="AudioStream" uid="uid://nmd2ymhxbk5x" path="res://Audio/SFX/collect_02.wav" id="2_3cnsg"]
+[ext_resource type="AudioStream" uid="uid://d1cnejdrptbys" path="res://Audio/SFX/collect_03.wav" id="3_xx4uy"]
+[ext_resource type="AudioStream" uid="uid://m23wgmu26vkd" path="res://Audio/SFX/collect_04.wav" id="4_nec24"]
+[ext_resource type="AudioStream" uid="uid://wqjc0gg6xfkh" path="res://Audio/SFX/collect_05.wav" id="5_x37o6"]
+
+[resource]
+script = ExtResource("1_5lbui")
+id = "collect"
+files = Array[AudioStream]([ExtResource("1_54kk7"), ExtResource("2_3cnsg"), ExtResource("3_xx4uy"), ExtResource("4_nec24"), ExtResource("5_x37o6")])
+volume_db = -10.0
+min_pitch_scale = 0.9
+max_pitch_scale = 1.1
+is_music = false
+always_play = false
+is_unique = false
+metadata/_custom_type_script = "uid://naq7mv4jk3ys"

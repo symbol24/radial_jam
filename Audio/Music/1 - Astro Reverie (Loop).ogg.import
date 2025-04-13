@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cmouaeuk0dyyx"
+path="res://.godot/imported/1 - Astro Reverie (Loop).ogg-b39cb173937841520138394daf384f0d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Music/1 - Astro Reverie (Loop).ogg"
+dest_files=["res://.godot/imported/1 - Astro Reverie (Loop).ogg-b39cb173937841520138394daf384f0d.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

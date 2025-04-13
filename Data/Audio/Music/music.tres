@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AudioFile" load_steps=8 format=3 uid="uid://mrirubgaqn8c"]
+
+[ext_resource type="Script" uid="uid://naq7mv4jk3ys" path="res://addons/AudioBySymbol/Code/Audio/audio_file.gd" id="1_2bg6e"]
+[ext_resource type="AudioStream" uid="uid://cmouaeuk0dyyx" path="res://Audio/Music/1 - Astro Reverie (Loop).ogg" id="1_t5vco"]
+[ext_resource type="AudioStream" uid="uid://l6kuf8m5u5yr" path="res://Audio/Music/2 - Galactic Odyssey (Loop).ogg" id="2_7wmcu"]
+[ext_resource type="AudioStream" uid="uid://hkg2682kldjv" path="res://Audio/Music/3 - Lunar Serenity (Loop).ogg" id="3_sfgh3"]
+[ext_resource type="AudioStream" uid="uid://dkm41r8udninb" path="res://Audio/Music/4 - Celestial Echoes (Loop).ogg" id="4_cgtec"]
+[ext_resource type="AudioStream" uid="uid://bqje3ql3rrmc6" path="res://Audio/Music/5 - Stellar Drift  (Loop).ogg" id="5_22hwj"]
+[ext_resource type="AudioStream" uid="uid://b22rnykcuj35i" path="res://Audio/Music/6 - Orbital Echoes (Loop).ogg" id="6_g74qg"]
+
+[resource]
+script = ExtResource("1_2bg6e")
+id = "music"
+files = Array[AudioStream]([ExtResource("1_t5vco"), ExtResource("2_7wmcu"), ExtResource("3_sfgh3"), ExtResource("4_cgtec"), ExtResource("5_22hwj"), ExtResource("6_g74qg")])
+volume_db = -10.0
+min_pitch_scale = 1.0
+max_pitch_scale = 1.0
+is_music = true
+always_play = false
+is_unique = false
+metadata/_custom_type_script = "uid://naq7mv4jk3ys"

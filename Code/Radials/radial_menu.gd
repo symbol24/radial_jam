@@ -8,11 +8,14 @@ const RADIUS:float = 70.0
 const ROTTIME:float = 0.5
 
 
+@export var rotate_sfx:AudioFile
+@export var select_sfx:AudioFile
+@export var open_sfx:AudioFile
+
 @onready var selector: NinePatchRect = %selector
 @onready var items: Node2D = %items
 
 var radial_items:Array[RadialItem] = []
-var active_item:int = 0
 var focused_item:int = 0
 var data:RadialMenuData
 var rotating:bool = false
@@ -35,27 +38,20 @@ func setup_menu(new_data:RadialMenuData) -> void:
 
 
 func toggle_menu(display:bool) -> void:
-	focused_item = active_item
 	visible = display
+	if visible: Audio.play_audio(open_sfx)
 
 
 func move_selection(left:bool) -> void:
-	var direction:float = 1
 	if visible:
-		if left:
-			focused_item -= 1
-			if focused_item < 0: focused_item = radial_items.size() - 1
-		else:
-			focused_item += 1
-			if focused_item >= radial_items.size(): focused_item = 0
-			direction = -1
-	_rotate(items.rotation_degrees + (360/data.items.size() * direction))
+		var direction:int = 1 if left else -1
+		_rotate(items.rotation_degrees + (360/data.items.size() * direction), -direction)
 
 
 func select() -> void:
-	if visible and radial_items[focused_item].is_visible():
-		active_item = focused_item
-		Signals.ItemSelected.emit(data.id, radial_items[active_item].data.id)
+	if visible and radial_items[focused_item].is_visible() and not rotating:
+		Audio.play_audio(select_sfx)
+		Signals.ItemSelected.emit(data.id, radial_items[focused_item].data.id)
 
 
 func get_item_by_id(id:StringName) -> RadialItem:
@@ -64,13 +60,21 @@ func get_item_by_id(id:StringName) -> RadialItem:
 	return null
 
 
-func _rotate(target:float) -> void:
+func _rotate(target:float, direction:int) -> void:
 	if not rotating:
+		Audio.play_audio(rotate_sfx)
 		rotating = true
 		var tween:Tween = create_tween()
+		tween.finished.connect(_finish_move.bind(direction))
 		tween.tween_property(items, "rotation_degrees", target, RadialManager.INPUTDELAY)
-		await tween.finished
-		rotating = false
+		
+
+
+func _finish_move(direction:int) -> void:
+	focused_item += direction
+	if focused_item < 0: focused_item = radial_items.size() - 1
+	elif focused_item >= radial_items.size(): focused_item = 0
+	rotating = false
 
 
 func _set_positions() -> void:

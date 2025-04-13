@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_c58us")
-base = 625
+base = 156
 percent = 0.1
 visible_at_create = false
 id = &"generator"

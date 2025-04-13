@@ -8,8 +8,7 @@ class_name UpgradeItemData extends RadialItemData
 var level:int = 0
 var cost:int:
 	get:
-		var new:int = int(previous * percent)
-		return base + new
+		return _get_cost()
 var previous:int = 0
 
 
@@ -18,6 +17,11 @@ func upgrade(material:int) -> void:
 		Signals.UpgradeCost.emit(cost)
 		previous = cost
 		level += 1
+		#print("%s level %s new cost: %s" % [id, level, cost])
 		Signals.UpgradeAdded.emit(id, level)
 	else:
 		Signals.NotEnoughMaterial.emit()
+
+
+func _get_cost() -> int:
+	return previous + int(percent * previous) if previous != 0 else base

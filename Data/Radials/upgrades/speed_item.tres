@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_50nq6")
-base = 100
+base = 25
 percent = 0.1
 visible_at_create = true
 id = &"speed"

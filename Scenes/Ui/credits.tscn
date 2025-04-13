@@ -119,7 +119,7 @@ vertical_alignment = 1
 
 [node name="Label9" type="Label" parent="border/PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "names go here"
+text = "alkakrab, hoveaudio"
 horizontal_alignment = 1
 vertical_alignment = 1
 

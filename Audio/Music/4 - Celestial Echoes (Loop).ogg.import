@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dkm41r8udninb"
+path="res://.godot/imported/4 - Celestial Echoes (Loop).ogg-272f71eefde1649491c3b8c230776897.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Music/4 - Celestial Echoes (Loop).ogg"
+dest_files=["res://.godot/imported/4 - Celestial Echoes (Loop).ogg-272f71eefde1649491c3b8c230776897.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

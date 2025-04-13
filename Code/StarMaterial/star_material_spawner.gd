@@ -4,7 +4,8 @@ class_name StarMaterialSpawner extends Node2D
 const MATERIAL:PackedScene = preload("uid://dooxkwhlrhgtb")
 const RADIUS:float = 180
 const CENTER:Vector2 = Vector2(90, 90)
-const LEVELMULTI:float = 0.5
+const LEVELMULTI:float = 0.05
+const SPAWNLEVELMULTI:float = 0.25
 
 
 @export var base_spawn_delay:float = 1.0
@@ -18,14 +19,17 @@ var game_timer:float = 0.0
 var pool:Array[StarMaterial] = []
 var can_spawn:bool = true
 var timer_active:bool = true
-var spawn_delay:float = maxf(base_spawn_delay - (base_spawn_delay * LEVELMULTI * current_level), min_spawn_delay) if current_level > 1 else base_spawn_delay
+var spawn_delay:float:
+	get:
+		return maxf(base_spawn_delay - (LEVELMULTI * current_level), min_spawn_delay) if current_level > 1 else base_spawn_delay
 var spawn_timer:float = 500.0:
 	set(value):
 		spawn_timer = value
 		if spawn_timer >= spawn_delay:
 			_spawn_star_material()
 var inter_delay:float = maxf(base_spawn_count_delay - (base_spawn_count_delay * LEVELMULTI * current_level), min_spawn_count_delay) if current_level > 1 else base_spawn_count_delay
-var spawn_count:int = base_spawn_count + int(base_spawn_count * LEVELMULTI * current_level) if current_level > 1 else base_spawn_count
+var spawn_count:int:
+	get: return base_spawn_count if current_level == 1 else base_spawn_count + int(SPAWNLEVELMULTI * current_level)
 var spawning:bool = false
 var stage:Node2D = null:
 	get:
@@ -52,6 +56,7 @@ func _spawn_star_material() -> void:
 	spawning = true
 	timer_active = false
 	var i:int = 0
+	#print("spawn count: ", spawn_count)
 	while i < spawn_count:
 		_spawn_one()
 		await get_tree().create_timer(inter_delay).timeout
@@ -81,7 +86,7 @@ func _return_to_pool(star_material:StarMaterial) -> void:
 
 
 func _get_value() -> int:
-	return 1 + int(current_level * LEVELMULTI) + ship.generated_value
+	return Utilities.rng.randi_range(1,10) + int(current_level * LEVELMULTI) + ship.generated_value
 
 
 func _check_level(value:int) -> void:

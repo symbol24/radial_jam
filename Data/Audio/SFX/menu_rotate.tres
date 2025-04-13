@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AudioFile" load_steps=3 format=3 uid="uid://bxcr6fb8l5bym"]
+
+[ext_resource type="AudioStream" uid="uid://dbdprh4ormyfx" path="res://Audio/SFX/thump.wav" id="1_k7440"]
+[ext_resource type="Script" uid="uid://naq7mv4jk3ys" path="res://addons/AudioBySymbol/Code/Audio/audio_file.gd" id="1_s0mib"]
+
+[resource]
+script = ExtResource("1_s0mib")
+id = "menu_rotate"
+files = Array[AudioStream]([ExtResource("1_k7440")])
+volume_db = -10.0
+min_pitch_scale = 0.9
+max_pitch_scale = 1.1
+is_music = false
+always_play = false
+is_unique = false
+metadata/_custom_type_script = "uid://naq7mv4jk3ys"

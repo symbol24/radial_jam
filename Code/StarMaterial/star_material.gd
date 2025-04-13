@@ -22,7 +22,7 @@ var collector_triggered:bool = false
 func _physics_process(delta: float) -> void:
 	if active:
 		var target:Vector2 = ship.global_position if collector_triggered else TARGET
-		global_position = global_position.move_toward(TARGET, delta * speed)
+		global_position = global_position.move_toward(target, delta * speed)
 
 
 func setup_star_material(new_value:int, collector_chance:float) -> void:

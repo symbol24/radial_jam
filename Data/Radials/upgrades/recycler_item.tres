@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_46ln2")
-base = 1563
+base = 390
 percent = 0.1
 visible_at_create = false
 id = &"recycler"

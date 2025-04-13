@@ -7,6 +7,7 @@ const RADIALMENU:PackedScene = preload("uid://hwjol52yqrxy")
 
 
 @export var radia_menu_datas:Array[RadialMenuData] = []
+@export var menu_close_sfx:AudioFile
 
 var radials:Array[RadialMenu] = []
 var active_radial:RadialMenu = null
@@ -33,7 +34,7 @@ var ship:Ship = null:
 
 
 func _input(event: InputEvent) -> void:
-	if not menu_up:
+	if not menu_up and is_visible():
 		if active_radial and active_radial.is_visible():
 			if event.is_action_pressed(&"left"):
 				left = true
@@ -46,9 +47,11 @@ func _input(event: InputEvent) -> void:
 			if event.is_action_released(&"right"):
 				right = false
 			if event.is_action_pressed(&"select"):
-				active_radial.select()
-				_toggle_radial(active_radial.data.id, false)
+				if not active_radial.rotating:
+					active_radial.select()
+					_toggle_radial(active_radial.data.id, false)
 			if event.is_action_pressed(&"pause"):
+				Audio.play_audio(menu_close_sfx)
 				_toggle_radial(active_radial.data.id, false)
 				if get_tree().paused: get_tree().paused = false
 		else:
@@ -151,8 +154,10 @@ func _upgrade_check(level:int) -> void:
 	
 	if not unlock.is_empty():
 		var key:StringName = unlock.keys()[0]
-		var radial:RadialMenu = _get_radial_by_id(&"upgrades_menu")
+		var radial:RadialMenu = _get_radial_by_name(&"upgrades_menu")
+			
 		if radial:
+			if radial.is_visible(): radial.hide()
 			var toget:StringName = &""
 			match key:
 				&"collector":

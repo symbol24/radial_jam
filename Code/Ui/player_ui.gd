@@ -8,6 +8,8 @@ const HOWTO:String = "uid://b4dxqdfuynvhl"
 const MESSAGETIMER:float = 5.0
 
 
+@export var menu_close_sfx:AudioFile
+
 @onready var star_material_label: Label = %star_material_label
 @onready var star_material: Label = %star_material
 @onready var speed_label: Label = %speed_label
@@ -60,7 +62,7 @@ func _update_star_material(value:int) -> void:
 
 func _toggle_ui(ui_id:StringName, display:bool) -> void:
 	var to_toggle:Control
-	print(ui_id)
+	#print(ui_id)
 	match ui_id:
 		&"play_ui":
 			if display: show()
@@ -93,7 +95,8 @@ func _toggle_ui(ui_id:StringName, display:bool) -> void:
 		if display: 
 			to_toggle.show()
 			active = ui_id
-		else: 
+		else:
+			Audio.play_audio(menu_close_sfx)
 			to_toggle.hide()
 			active = &""
 	

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dyd0ga0ak7m3e"]
+[gd_scene load_steps=9 format=3 uid="uid://dyd0ga0ak7m3e"]
 
 [ext_resource type="Script" uid="uid://h4lin804xjqy" path="res://Code/Autoloads/ui.gd" id="1_6c322"]
 [ext_resource type="Script" uid="uid://t1evp3nd72xg" path="res://Code/Utilities/loading_screen.gd" id="2_3p64k"]
 [ext_resource type="Script" uid="uid://chyikkb42fd7g" path="res://Code/Radials/radial_manager.gd" id="2_fuhdj"]
 [ext_resource type="Script" uid="uid://cn3nicl1xdhqb" path="res://Code/Ui/player_ui.gd" id="2_k03pl"]
 [ext_resource type="Script" uid="uid://ccgbf3pijgq37" path="res://Code/Radials/radial_menu_data.gd" id="3_74xe2"]
+[ext_resource type="Resource" uid="uid://d1rgkuqwq21oq" path="res://Data/Audio/SFX/menu_select.tres" id="3_tqbpu"]
 [ext_resource type="Resource" uid="uid://bwl5earidrct6" path="res://Data/Radials/pause_menu.tres" id="5_k03pl"]
 [ext_resource type="Resource" uid="uid://d3cps7trygy47" path="res://Data/Radials/upgrades_menu.tres" id="6_u75ug"]
 
@@ -22,6 +23,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 script = ExtResource("2_k03pl")
+menu_close_sfx = ExtResource("3_tqbpu")
 
 [node name="side_panel" type="PanelContainer" parent="PlayerUi"]
 custom_minimum_size = Vector2(60, 180)
@@ -172,6 +174,7 @@ offset_bottom = 91.0
 mouse_filter = 2
 script = ExtResource("2_fuhdj")
 radia_menu_datas = Array[ExtResource("3_74xe2")]([ExtResource("5_k03pl"), ExtResource("6_u75ug")])
+menu_close_sfx = ExtResource("3_tqbpu")
 
 [node name="LoadingScreen" type="PanelContainer" parent="."]
 unique_name_in_owner = true
